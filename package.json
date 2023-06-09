@@ -1,21 +1,23 @@
 {
   "name": "firstprj_nodejs",
   "version": "1.0.0",
-  "description": "\"Lần thứ 4 hope chạy đC\"",
-  "main": "index.js",
+  "description": "gõ gì cũng đc",
+  "main": "app/index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js",
+    "start": "nodemon app/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "\"Project\""
-  ],
   "author": "Quan Mai",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mysql2": "^3.3.0",
+    "save": "^2.9.0"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.22"
   }
 }

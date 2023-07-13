@@ -1,13 +1,15 @@
 module.exports = function(router){
-const homecontroller = require('../Controllers/home.controller')
-var JWT = require('../common/JsonWebToken')
+    const homecontroller = require('../Controllers/home.controller');
+    const uploadcontroller = require('../Controllers/upload.controller');
+    const upload = require('../common/SaveFile');
+    const JWT = require('../common/JsonWebToken')
 
 
-router.get('/home', homecontroller.home);
+    router.get('/home', homecontroller.home);
 
-router.get('/about', homecontroller.about);
+    router.get('/about', homecontroller.about);
 
-router.get('/token', async function (req, res){
+    router.get('/token', async function (req, res){
     var user = {
         name :"Admin",
         email: "admin@hihieh.com",
@@ -15,6 +17,7 @@ router.get('/token', async function (req, res){
     const _token = await JWT.make(user);
     res.send({ token: _token});
 })
+
     router.get('/check_token', async function (req, res){
         try{
             var _token = "eyJhbdGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AaGloaWVoLmNvbSJ9LCJpYXQiOjE2ODUyMTQ4MTksImV4cCI6MTY4NTIxODQxOX0.DB3FD_lvSOTGKKKWHFniiBV1XIWk9gVgjC2JS1ovHpk"
@@ -25,4 +28,10 @@ router.get('/token', async function (req, res){
         }
 
     });
-}
+    router.post('/hi1', uploadcontroller.single1);
+
+    router.post('/hi', upload.single('file'), uploadcontroller.single1);
+
+
+ }
+
